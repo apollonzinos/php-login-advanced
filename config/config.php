@@ -73,7 +73,7 @@ define("EMAIL_SMTP_ENCRYPTION", 'ssl');
  * Configuration for: password reset email data
  * Set the absolute URL to password_reset.php, necessary for email password reset links
  */
-define("EMAIL_PASSWORDRESET_URL", "http://127.0.0.1/php-login/2-advanced/password_reset.php");
+define("EMAIL_PASSWORDRESET_URL", "http://127.0.0.1/php-login-advanced/password_reset.php");
 define("EMAIL_PASSWORDRESET_FROM", "noreply@example.com");
 define("EMAIL_PASSWORDRESET_FROM_NAME", "My Project");
 define("EMAIL_PASSWORDRESET_SUBJECT", "Password reset for PROJECT XY");
@@ -83,7 +83,7 @@ define("EMAIL_PASSWORDRESET_CONTENT", "Please click on this link to reset your p
  * Configuration for: verification email data
  * Set the absolute URL to register.php, necessary for email verification links
  */
-define("EMAIL_VERIFICATION_URL", "http://127.0.0.1/php-login/2-advanced/register.php");
+define("EMAIL_VERIFICATION_URL", "http://127.0.0.1/php-login-advanced/register.php");
 define("EMAIL_VERIFICATION_FROM", "noreply@example.com");
 define("EMAIL_VERIFICATION_FROM_NAME", "My Project");
 define("EMAIL_VERIFICATION_SUBJECT", "Account Activation for PROJECT XY");
