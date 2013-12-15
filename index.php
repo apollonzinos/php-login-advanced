@@ -2,7 +2,7 @@
 
 /**
  * A simple PHP Login Script / ADVANCED VERSION
- * For more version (one-file, minimal, framework-like) visit http://www.php-login.net
+ * For more versions (one-file, minimal, framework-like) visit http://www.php-login.net
  *
  * @author Panique
  * @link https://github.com/panique/php-login-advanced/
