@@ -4,7 +4,7 @@
  * handles the user login/logout/session
  * @author Panique
  * @link http://www.php-login.net
- * @link https://github.com/panique/php-login/
+ * @link https://github.com/panique/php-login-advanced/
  * @license http://opensource.org/licenses/MIT MIT License
  */
 class Login
@@ -129,12 +129,12 @@ class Login
     }
 
     /**
-     * Checks if database connection is opened.
-     * If not, then tries to open it.
+     * Checks if database connection is opened. If not, then this method tries to open it.
+     * @return bool Success status of the database connecting process
      */
     private function databaseConnection()
     {
-        // connection already opened
+        // if connection already exists
         if ($this->db_connection != null) {
             return true;
         } else {
@@ -143,9 +143,10 @@ class Login
                 return true;
             } catch (PDOException $e) {
                 $this->errors[] = $this->lang['Database error'] . $e->getMessage();
-                return false;
             }
         }
+        // default return
+        return false;
     }
 
     /**
@@ -696,6 +697,7 @@ class Login
 
     /**
      * Gets the success state of the password-reset-link-validation.
+     * TODO: should be more like getPasswordResetLinkValidationStatus
      * @return boolean
      */
     public function passwordResetLinkIsValid()
@@ -705,6 +707,7 @@ class Login
 
     /**
      * Gets the success state of the password-reset action.
+     * TODO: should be more like getPasswordResetSuccessStatus
      * @return boolean
      */
     public function passwordResetWasSuccessful()

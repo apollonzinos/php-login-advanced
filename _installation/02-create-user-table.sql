@@ -1,8 +1,3 @@
-If you don't want to (or can) import the .sql file (with demo users) via phpmyadmin etc,
-you can also create the database and the table via these SQL statements:
-
-CREATE DATABASE IF NOT EXISTS `login`;
-
 CREATE TABLE IF NOT EXISTS `login`.`users` (
  `user_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'auto incrementing user_id of each user, unique index',
  `user_name` varchar(64) COLLATE utf8_unicode_ci NOT NULL COMMENT 'user''s name',

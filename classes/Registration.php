@@ -4,7 +4,7 @@
  * Handles the user registration
  * @author Panique
  * @link http://www.php-login.net
- * @link https://github.com/panique/php-login/
+ * @link https://github.com/panique/php-login-advanced/
  * @license http://opensource.org/licenses/MIT MIT License
  */
 class Registration
