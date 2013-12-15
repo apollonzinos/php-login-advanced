@@ -1,4 +1,2 @@
-php-login-advanced
-==================
-
-A simple, but secure PHP login script. Register, login, logout, email verification, password reset, edit user data, gravatars, captchas, remember me / stay logged in cookies, login with email, mail sending via PHPMailer (SMTP or PHP's mail() function/linux sendmail).
+This is the 2-advanced version of the https://github.com/panique/php-login project. The php-login project currently
+gets a massive makeover, all versions get their own repos. What you see is in-development.
