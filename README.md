@@ -9,3 +9,7 @@ If you think this script is useful and saves you a lot of work, then think about
    or [GitTip](https://www.gittip.com/Panique/)
 2. Rent your next server at [A2 Hosting](http://www.dev-metal.com/a2hosting.png) or [DigitalOcean](https://www.digitalocean.com/?refcode=40d978532a20).
 3. Contribute to this project. Feel free to improve this project with your skills.
+gets a massive makeover, all versions get their own repos. What you see is in-development.
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/panique/php-login-advanced/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
