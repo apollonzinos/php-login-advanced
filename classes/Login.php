@@ -102,6 +102,9 @@ class Login
 
         // if user just submitted a login form
         } elseif (isset($_POST["login"])) {
+            if (!isset($_POST['user_rememberme'])) {
+                $_POST['user_rememberme'] = null;
+            }
             $this->loginWithPostData($_POST['user_name'], $_POST['user_password'], $_POST['user_rememberme']);
         }
 
@@ -284,7 +287,7 @@ class Login
                 if (isset($user_rememberme)) {
                     $this->newRememberMeCookie();
                 } else {
-                    // Reset rememberme token
+                    // Reset remember-me token
                     $this->deleteRememberMeCookie();
                 }
 
