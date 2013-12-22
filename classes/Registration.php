@@ -153,7 +153,7 @@ class Registration
                         $query_delete_user->bindValue(':user_id', $user_id, PDO::PARAM_INT);
                         $query_delete_user->execute();
 
-                        $this->errors[] = MESSAGE_VERIFICATION_MAIL_ERRROR;
+                        $this->errors[] = MESSAGE_VERIFICATION_MAIL_ERROR;
                     }
                 } else {
                     $this->errors[] = MESSAGE_REGISTRATION_FAILED;
