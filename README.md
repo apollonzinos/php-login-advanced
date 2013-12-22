@@ -18,6 +18,9 @@ See [php-login.net](http://www.php-login.net) for more info.
 *Please note: The entire project is currently in a restructuring process,
 look into https://github.com/panique/php-login for the latest stable version and install tutorials.*
 
+*Please also note: This version is not maintained anymore. The php-login project will focus on developing the
+"Professional MVC Version" and highly recommends you to also use that version.*
+
 1. **One-file version:** Full login script in one file. Uses a one-file SQLite database (no MySQL needed) and PDO.
    Features: Register, login, logout.
    https://github.com/panique/php-login-one-file
@@ -27,7 +30,7 @@ look into https://github.com/panique/php-login for the latest stable version and
 3. **Advanced version** Similar to the minimal version, but full of features.
    Uses PDO, Captchas, mail sending via SMTP and much more.
    https://github.com/panique/php-login-advanced
-3. **Professional version** Everything comes with a professional MVC framework structure, perfect for building
+4. **Professional version** Everything comes with a professional MVC framework structure, perfect for building
    real applications. Additional features like: URL rewriting, professional usage of controllers and actions, PDO, MySQL,
    mail sending via PHPMailer (SMTP or PHP's mail() function/linux sendmail), user profile pages, public user profiles,
    gravatars and local avatars, account upgrade/downgrade etc., login via Facebook, Composer integration, etc.

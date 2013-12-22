@@ -14,10 +14,6 @@ class Registration
      */
     private $db_connection            = null;
     /**
-     * @var array array with translation of language strings
-     */
-    private $lang                     = array();
-    /**
      * @var bool success state of registration
      */
     public  $registration_successful  = false;
@@ -41,9 +37,6 @@ class Registration
     public function __construct()
     {
         session_start();
-
-        // Create internal reference to global array with translation of language strings
-        $this->lang = & $GLOBALS['phplogin_lang'];
 
         // if we have such a POST request, call the registerNewUser() method
         if (isset($_POST["register"])) {
@@ -69,7 +62,7 @@ class Registration
                 return true;
             // If an error is catched, database connection failed
             } catch (PDOException $e) {
-                $this->errors[] = $this->lang['Database error'];
+                $this->errors[] = MESSAGE_DATABASE_ERROR;
                 return false;
             }
         }
@@ -88,25 +81,25 @@ class Registration
         // check provided data validity
         // TODO: check for "return true" case early, so put this first
         if (strtolower($captcha) != strtolower($_SESSION['captcha'])) {
-            $this->errors[] = $this->lang['Wrong captcha'];
+            $this->errors[] = MESSAGE_CAPTCHA_WRONG;
         } elseif (empty($user_name)) {
-            $this->errors[] = $this->lang['Empty Username'];
+            $this->errors[] = MESSAGE_USERNAME_EMPTY;
         } elseif (empty($user_password) || empty($user_password_repeat)) {
-            $this->errors[] = $this->lang['Empty Password'];
+            $this->errors[] = MESSAGE_PASSWORD_EMPTY;
         } elseif ($user_password !== $user_password_repeat) {
-            $this->errors[] = $this->lang['Bad confirm password'];
+            $this->errors[] = MESSAGE_PASSWORD_BAD_CONFIRM;
         } elseif (strlen($user_password) < 6) {
-            $this->errors[] = $this->lang['Password too short'];
+            $this->errors[] = MESSAGE_PASSWORD_TOO_SHORT;
         } elseif (strlen($user_name) > 64 || strlen($user_name) < 2) {
-            $this->errors[] = $this->lang['Username bad length'];
+            $this->errors[] = MESSAGE_USERNAME_BAD_LENGTH;
         } elseif (!preg_match('/^[a-z\d]{2,64}$/i', $user_name)) {
-            $this->errors[] = $this->lang['Invalid username'];
+            $this->errors[] = MESSAGE_USERNAME_INVALID;
         } elseif (empty($user_email)) {
-            $this->errors[] = $this->lang['Empty email'];
+            $this->errors[] = MESSAGE_EMAIL_EMPTY;
         } elseif (strlen($user_email) > 64) {
-            $this->errors[] = $this->lang['Email too long'];
+            $this->errors[] = MESSAGE_EMAIL_TOO_LONG;
         } elseif (!filter_var($user_email, FILTER_VALIDATE_EMAIL)) {
-            $this->errors[] = $this->lang['Invalid email'];
+            $this->errors[] = MESSAGE_EMAIL_INVALID;
 
         // finally if all the above checks are ok
         } else if ($this->databaseConnection()) {
@@ -118,9 +111,10 @@ class Registration
             $result = $query_check_user_name->fetchAll();
 
             // if username or/and email find in the database
+            // TODO: this is really awful!
             if (count($result) > 0) {
                 for ($i = 0; $i < count($result); $i++) {
-                    $this->errors[] = ($result[$i]['user_name'] == $user_name) ? $this->lang['Username exist'] : $this->lang['Email exist'];
+                    $this->errors[] = ($result[$i]['user_name'] == $user_name) ? MESSAGE_USERNAME_EXISTS : MESSAGE_EMAIL_ALREADY_EXISTS;
                 }
             } else {
                 // check if we have a constant HASH_COST_FACTOR defined (in config/hashing.php),
@@ -151,7 +145,7 @@ class Registration
                     // send a verification email
                     if ($this->sendVerificationEmail($user_id, $user_email, $user_activation_hash)) {
                         // when mail has been send successfully
-                        $this->messages[] = $this->lang['Verification mail sent'];
+                        $this->messages[] = MESSAGE_VERIFICATION_MAIL_SENT;
                         $this->registration_successful = true;
                     } else {
                         // delete this users account immediately, as we could not send a verification email
@@ -159,10 +153,10 @@ class Registration
                         $query_delete_user->bindValue(':user_id', $user_id, PDO::PARAM_INT);
                         $query_delete_user->execute();
 
-                        $this->errors[] = $this->lang['Verification mail error'];
+                        $this->errors[] = MESSAGE_VERIFICATION_MAIL_ERRROR;
                     }
                 } else {
-                    $this->errors[] = $this->lang['Registration failed'];
+                    $this->errors[] = MESSAGE_REGISTRATION_FAILED;
                 }
             }
         }
@@ -209,7 +203,7 @@ class Registration
         $mail->Body = EMAIL_VERIFICATION_CONTENT.' '.$link;
 
         if(!$mail->Send()) {
-            $this->errors[] = $this->lang['Verification mail not sent'] . $mail->ErrorInfo;
+            $this->errors[] = MESSAGE_VERIFICATION_MAIL_NOT_SENT . $mail->ErrorInfo;
             return false;
         } else {
             return true;
@@ -231,9 +225,9 @@ class Registration
 
             if ($query_update_user->rowCount() > 0) {
                 $this->verification_successful = true;
-                $this->messages[] = $this->lang['Activation successful'];
+                $this->messages[] = MESSAGE_REGISTRATION_ACTIVATION_SUCCESSFUL;
             } else {
-                $this->errors[] = $this->lang['Activation error'];
+                $this->errors[] = MESSAGE_REGISTRATION_ACTIVATION_NOT_SUCCESSFUL;
             }
         }
     }
