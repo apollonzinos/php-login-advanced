@@ -1,4 +1,4 @@
-<?php include('header.php'); ?>
+<?php include('_header.php'); ?>
 
 <?php if ($login->passwordResetLinkIsValid() == true) { ?>
 <form method="post" action="password_reset.php" name="new_password_form">
@@ -23,4 +23,4 @@
 
 <a href="index.php"><?php echo WORDING_BACK_TO_LOGIN; ?></a>
 
-<?php include('footer.php'); ?>
+<?php include('_footer.php'); ?>

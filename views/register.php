@@ -1,20 +1,4 @@
-<?php include('header.php'); ?>
-
-<?php
-// show negative messages
-if ($registration->errors) {
-    foreach ($registration->errors as $error) {
-        echo $error;
-    }
-}
-
-// show positive messages
-if ($registration->messages) {
-    foreach ($registration->messages as $message) {
-        echo $message;
-    }
-}
-?>
+<?php include('_header.php'); ?>
 
 <!-- show registration form, but only if we didn't submit already -->
 <?php if (!$registration->registration_successful && !$registration->verification_successful) { ?>
@@ -42,4 +26,4 @@ if ($registration->messages) {
 
     <a href="index.php"><?php echo WORDING_BACK_TO_LOGIN; ?></a>
 
-<?php include('footer.php'); ?>
+<?php include('_footer.php'); ?>

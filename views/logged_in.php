@@ -1,4 +1,4 @@
-<?php include('header.php'); ?>
+<?php include('_header.php'); ?>
 
 <?php
 // if you need the user's information, just put them into the $_SESSION variable and output them here
@@ -12,4 +12,4 @@ echo WORDING_PROFILE_PICTURE . '<br/>' . $login->user_gravatar_image_tag;
 	<a href="edit.php"><?php echo WORDING_EDIT_USER_DATA; ?></a>
 </div>
 
-<?php include('footer.php'); ?>
+<?php include('_footer.php'); ?>
