@@ -1,4 +1,4 @@
-# A PHP login script (ADVANCED VERSION)
+## A PHP login script (ADVANCED VERSION)
 
 A simple, but secure PHP login script. Similar to minimal version, but much more features: PDO, Register, login, logout,
 email verification, password reset, edit user data, gravatars, captchas, remember me / stay logged in cookies,
