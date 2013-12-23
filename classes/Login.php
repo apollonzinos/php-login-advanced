@@ -268,7 +268,9 @@ class Login
 
             // if this user not exists
             if (! isset($result_row->user_id)) {
-                $this->errors[] = MESSAGE_USER_DOES_NOT_EXIST;
+                // was MESSAGE_USER_DOES_NOT_EXIST before, but has changed to MESSAGE_LOGIN_FAILED
+                // to prevent potential attackers showing if the user exists
+                $this->errors[] = MESSAGE_LOGIN_FAILED;
             // using PHP 5.5's password_verify() function to check if the provided passwords fits to the hash of that user's password
             } else if (! password_verify($user_password, $result_row->user_password_hash)) {
                 $this->errors[] = MESSAGE_PASSWORD_WRONG;

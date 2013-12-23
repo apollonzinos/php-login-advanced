@@ -28,6 +28,8 @@ define('MESSAGE_REGISTRATION_ACTIVATION_SUCCESSFUL', 'Activation was successful!
 define('MESSAGE_REGISTRATION_ACTIVATION_NOT_SUCCESSFUL', 'Sorry, no such id/verification code combination here...');
 define('MESSAGE_COOKIE_INVALID', 'Invalid cookie');
 define('MESSAGE_USER_DOES_NOT_EXIST', 'This user does not exist');
+// The "login failed"-message is a security improved feedback that doesn't show a potential attacker if the user exists or not
+define("MESSAGE_LOGIN_FAILED", "Login failed.");
 define('MESSAGE_PASSWORD_WRONG', 'Wrong password. Try again.');
 define('MESSAGE_ACCOUNT_NOT_ACTIVATED', 'Your account is not activated yet. Please click on the confirm link in the mail.');
 define('MESSAGE_LOGGED_OUT', 'You have been logged out.');
