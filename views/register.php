@@ -10,10 +10,10 @@
 	<input id="user_email" type="email" name="user_email" required />
 
 	<label for="user_password_new"><?php echo WORDING_REGISTRATION_PASSWORD; ?></label>
-	<input id="user_password_new" type="password" name="user_password_new" pattern=".{6,}" required autocomplete="off" />  
+	<input id="user_password_new" type="password" name="user_password_new" pattern=".{6,}" required autocomplete="off" />
 
 	<label for="user_password_repeat"><?php echo WORDING_REGISTRATION_PASSWORD_REPEAT; ?></label>
-	<input id="user_password_repeat" type="password" name="user_password_repeat" pattern=".{6,}" required autocomplete="off" />        
+	<input id="user_password_repeat" type="password" name="user_password_repeat" pattern=".{6,}" required autocomplete="off" />
 
 	<img src="tools/showCaptcha.php" alt="captcha" />
 
