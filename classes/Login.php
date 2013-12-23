@@ -134,7 +134,13 @@ class Login
             return true;
         } else {
             try {
-                $this->db_connection = new PDO('mysql:host='. DB_HOST .';dbname='. DB_NAME, DB_USER, DB_PASS);
+                // Generate a database connection, using the PDO connector
+                // @see http://net.tutsplus.com/tutorials/php/why-you-should-be-using-phps-pdo-for-database-access/
+                // Also important: We include the charset, as leaving it out seems to be a security issue:
+                // @see http://wiki.hashphp.org/PDO_Tutorial_for_MySQL_Developers#Connecting_to_MySQL says:
+                // "Adding the charset to the DSN is very important for security reasons,
+                // most examples you'll see around leave it out. MAKE SURE TO INCLUDE THE CHARSET!"
+                $this->db_connection = new PDO('mysql:host='. DB_HOST .';dbname='. DB_NAME . ';charset=utf8', DB_USER, DB_PASS);
                 return true;
             } catch (PDOException $e) {
                 $this->errors[] = MESSAGE_DATABASE_ERROR . $e->getMessage();
