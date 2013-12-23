@@ -31,6 +31,7 @@ define("MESSAGE_PASSWORD_RESET_MAIL_FAILED", "Password reset mail NOT successful
 define("MESSAGE_PASSWORD_RESET_MAIL_SUCCESSFULLY_SENT", "Password reset mail successfully sent!");
 define("MESSAGE_PASSWORD_TOO_SHORT", "Password has a minimum length of 6 characters");
 define("MESSAGE_PASSWORD_WRONG", "Wrong password. Try again.");
+define("MESSAGE_PASSWORD_WRONG_3_TIMES", "You have entered an incorrect password 3 or more times already. Please wait 30 seconds to try again.");
 define("MESSAGE_REGISTRATION_ACTIVATION_NOT_SUCCESSFUL", "Sorry, no such id/verification code combination here...");
 define("MESSAGE_REGISTRATION_ACTIVATION_SUCCESSFUL", "Activation was successful! You can now log in!");
 define("MESSAGE_REGISTRATION_FAILED", "Sorry, your registration failed. Please go back and try again.");
