@@ -271,13 +271,20 @@ class Login
                 // was MESSAGE_USER_DOES_NOT_EXIST before, but has changed to MESSAGE_LOGIN_FAILED
                 // to prevent potential attackers showing if the user exists
                 $this->errors[] = MESSAGE_LOGIN_FAILED;
+            } else if (($result_row->user_failed_logins >= 3) && ($result_row->user_last_failed_login > (time() - 30))) {
+                $this->errors[] = MESSAGE_PASSWORD_WRONG_3_TIMES;
             // using PHP 5.5's password_verify() function to check if the provided passwords fits to the hash of that user's password
             } else if (! password_verify($user_password, $result_row->user_password_hash)) {
+                // increment the failed login counter for that user
+                $sth = $this->db_connection->prepare('UPDATE users '
+                        . 'SET user_failed_logins = user_failed_logins+1, user_last_failed_login = :user_last_failed_login '
+                        . 'WHERE user_name = :user_name OR user_email = :user_name');
+                $sth->execute(array(':user_name' => $user_name, ':user_last_failed_login' => time()));
+
                 $this->errors[] = MESSAGE_PASSWORD_WRONG;
-            // does the user activates his account with the verification email
+            // has the user activated their account with the verification email
             } else if ($result_row->user_active != 1) {
                 $this->errors[] = MESSAGE_ACCOUNT_NOT_ACTIVATED;
-
             } else {
                 // write user data into PHP SESSION [a file on your server]
                 $_SESSION['user_id'] = $result_row->user_id;
@@ -290,6 +297,12 @@ class Login
                 $this->user_name = $result_row->user_name;
                 $this->user_email = $result_row->user_email;
                 $this->user_is_logged_in = true;
+
+                // reset the failed login counter for that user
+                $sth = $this->db_connection->prepare('UPDATE users '
+                        . 'SET user_failed_logins = 0, user_last_failed_login = NULL '
+                        . 'WHERE user_id = :user_id AND user_failed_logins != 0');
+                $sth->execute(array(':user_id' => $result_row->user_id));
 
                 // if user has check the "remember me" checkbox, then generate token and write cookie
                 if (isset($user_rememberme)) {

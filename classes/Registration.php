@@ -33,7 +33,7 @@ class Registration
     /**
      * the function "__construct()" automatically starts whenever an object of this class is created,
      * you know, when you do "$login = new Login();"
-     */    
+     */
     public function __construct()
     {
         session_start();

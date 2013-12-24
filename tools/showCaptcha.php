@@ -3,10 +3,10 @@
 /**
  * This file generates a captcha string, writes it into the $_SESSION['captcha']
  * and renders a fresh captcha graphic file to the browser.
- * 
- * In the views you can use this by saying: 
+ *
+ * In the views you can use this by saying:
  * <img src="tools/showCaptcha.php" />
- * 
+ *
  * Check if the typed captcha is correct by saying:
  * if ($_POST["captcha"] == $_SESSION['captcha']) { ... } else { ... }
  */
