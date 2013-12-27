@@ -19,7 +19,7 @@ See [php-login.net](http://www.php-login.net) for more info.
 look into https://github.com/panique/php-login for the latest stable version and install tutorials.*
 
 *Please also note: This version is not maintained anymore. The php-login project will focus on developing the
-"Professional MVC Version" and highly recommends you to also use that version.*
+[Professional MVC Version](https://github.com/panique/php-login) and highly recommends you to also use that version.*
 
 1. **One-file version:** Full login script in one file. Uses a one-file SQLite database (no MySQL needed) and PDO.
    Features: Register, login, logout.
@@ -45,25 +45,27 @@ Live demo **[here](http://php-login.net/demo3.html)**, live demo's phpinfo(). **
 - PHP 5.3.7+
 - MySQL 5 database (please use a modern version of MySQL (5.5, 5.6, 5.7) as very old versions have a exotic bug that
 [makes PDO injections possible](http://stackoverflow.com/q/134099/1114320).
-- activated PHP's GD graphic functions
+- activated PHP's GD graphic functions (the tutorial shows how)
+- enabled OpenSSL module (the tutorial shows how)
 - this version uses mail sending, so you need to have an **SMTP mail sending account** somewhere OR you know how to get
  **linux's sendmail** etc. to run. As it's nearly impossible to send real mails with PHP's mail() function (due to
  anti-spam blocking of nearly every major mail provider in the world) you should really use SMTP mail sending.
 
 ## Installation (quick setup)
 
-* 1. create database *login* and table *users* via the SQL statements in the `_install` folder.
-* 2. change mySQL user and password in `config/config.php` (*DB_USER* and *DB_PASS*).
-* 3. as this version uses email sending, you'll need to a) provide an SMTP account in the config OR b) install a mail server tool on your server.
-If you want to use local mail sending (which is NOT recommended) then please have a look into the file "how to setup mail in PHP.txt" in the `_install` folder.
-If you want to use SMTP mail sending, then get an SMTP account (gmail.com for example) and put your login data into the config/email.php file.
-There's already a demo account scheme in the config. To connect to a SMTP service you'll proably need the PHP OpenSSL module, which is usually
-preinstalled on php/apache2. If it's not activated, please do so by uncommenting this line `extension=php_openssl.dll` in your `php.ini`!
-* 4. change the links etc. in `config/config` to your needs! You need to provide the URL of your project here to link to your project from within
+* 1. create database *login* and table *users* via the SQL statements in the `_installation` folder.
+* 2. in `config/config.php`, change mySQL user and password (*DB_USER* and *DB_PASS*).
+* 3. in `config/config.php`, change *COOKIE_DOMAIN* to your domain name (and don't forget to put the dot in front of the domain!)
+* 4. in `config/config.php`, change *COOKIE_SECRET_KEY* to a random string. this will make your cookies more secure
+* 5. change the URL part of EMAIL_PASSWORDRESET_URL and EMAIL_VERIFICATION_URL in `config/config.php` to your URL! You need to provide the URL of your project here to link to your project from within
 verification/password reset mails.
-* 5. in `config/config.php`, change *COOKIE_DOMAIN* to your domain name
-* 6. in `config/config.php`, change *COOKIE_SECRET_KEY* to something new, simply a random string that will be a unique
-code for your project
+* 6. as this version uses email sending, you'll need to a) provide an SMTP account in the config OR b) install a mail server tool on your server.
+Using a real SMTP provider (like SMTP2GO etc.) is highly recommended. Sending emails manually via mail() is something for hardcore admins.
+Usually mails sent via mail() will never reach the receiver. Please also don't try weird Gmail setups, this can fail to a lot of reasons.
+Get professional and send mails like mail should be sent. It's extremely cheap and works.
+
+- To enable OpenSSL, do `sudo apt-get install openssl` (and restart the apache via `sudo service apache2 restart`)
+- To enable PHP's GD graphic functions, do `sudo apt-get install php5-gd` (and restart the apache via `sudo service apache2 restart`)
 
 ## Installation (very detailed setup)
 
@@ -87,7 +89,12 @@ Have a look here for full explanaition: https://support.google.com/mail/answer/1
 
 ## How this script works
 
-TODO:
+If you look into the code and at the file/folder-structure everything should be self-explaining.
+
+TODO: Can somebody create a written, recorded or info-graphic-like explanation on how this php-login script works, inside out ?
+
+*Please note: This version is not maintained anymore. The php-login project will focus on developing the
+[Professional MVC Version](https://github.com/panique/php-login) and highly recommends you to also use that version.*
 
 ## Useful links
 
@@ -100,9 +107,8 @@ TODO:
 
 ## Themes / User Interfaces / Styles
 
-Bookmark the highly related partner-project "[php-login-styles](https://github.com/panique/php-login-styles)" which
-will host beautiful themes for all the php-login versions. Currently this is only a placeholder,
-the project starts in early 2014.
+Bookmark the highly related partner-project "[php-login-styles](https://github.com/panique/php-login-styles)" which will
+host beautiful themes for all the php-login versions. Currently this is only a placeholder, the project starts in 2014.
 
 ## License
 
@@ -117,10 +123,10 @@ Please commit only in *develop* branch. The *master* branch will always contain 
 
 If you think this script is useful and saves you a lot of work, then think about supporting the project:
 
-1. Donate via [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=P5YLUK4MW3LDG)
+1. Rent your next server at [A2 Hosting](http://www.a2hosting.com/4471.html) or [DigitalOcean](https://www.digitalocean.com/?refcode=40d978532a20).
+2. Donate via [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=P5YLUK4MW3LDG)
    or [GitTip](https://www.gittip.com/Panique/)
-2. Rent your next server at [A2 Hosting](http://www.a2hosting.com/4471.html) or [DigitalOcean](https://www.digitalocean.com/?refcode=40d978532a20).
-3. Contribute to this project. Feel free to improve this project with your skills.gets a massive makeover, all versions get their own repos. What you see is in-development.
+3. Contribute to this project. Feel free to improve this project with your skills.
 
 ## Stats
 
