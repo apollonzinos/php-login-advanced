@@ -8,8 +8,8 @@ echo WORDING_PROFILE_PICTURE . '<br/>' . $login->user_gravatar_image_tag;
 ?>
 
 <div>
-	<a href="index.php?logout"><?php echo WORDING_LOGOUT; ?></a>
-	<a href="edit.php"><?php echo WORDING_EDIT_USER_DATA; ?></a>
+    <a href="index.php?logout"><?php echo WORDING_LOGOUT; ?></a>
+    <a href="edit.php"><?php echo WORDING_EDIT_USER_DATA; ?></a>
 </div>
 
 <?php include('_footer.php'); ?>
